@@ -194,12 +194,11 @@
         }
         var allImage = document.getElementsByClassName("img-galery")
         console.log(allImage)
-        for(let item in allImage){
-            console.log(item)
+        Array.from(allImage).forEach((item)=>{
             item.onclick = (e)=>{
                 console.log(item.id)
             }
-        }
+        })
         
     </script>
 </body>

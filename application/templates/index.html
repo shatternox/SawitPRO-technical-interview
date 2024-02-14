@@ -24,12 +24,13 @@
 </div>
 <div class="w-100 gallery-main-section" id="msh">
   <div class="d-flex flex-wrap">
-    {% for img in images %} 
+    {% for idx,img in enumerate(images) %} 
       <div class="img-container p-4">
         <img
           src="data:image/{{ img['extension'] }};base64,{{ img['image_data'] }}"
           class="shadow-1-strong rounded mb-4 img-galery"
           alt="{{ img['image_name'] }}"
+          id=""
         />
         <span class="img-name">{{ img['image_name'] }}</span>
       </div>
