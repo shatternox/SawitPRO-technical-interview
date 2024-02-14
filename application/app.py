@@ -7,7 +7,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from SecureEncrypt import AESCipher
-import MySQLdb.cursors, os, re, secrets, base64
+import MySQLdb.cursors, os, re, secrets, base64, imghdr
 
 app = Flask(__name__)
 CORS(app)
@@ -121,6 +121,7 @@ def home():
         cipher = AESCipher(session['image_key'])
         decrypted_image = cipher.decrypt(image['image_data'])
         decrypted_images.append({
+            "image_id": image['image_id'],
             "image_data": decrypted_image,
             "image_name": image['filename'],
             "extension": image['filename'].split('.')[-1]
@@ -128,24 +129,23 @@ def home():
 
     return render_template('index.html', username=session['username'], images=decrypted_images)
 
-# Gallery route
-@app.route('/gallery', methods=['GET'])
-@authorize
-def gallery():
-    return render_template('gallery.html', username=session['username'])
-
 # Upload route
 @app.route('/upload', methods=['POST'])
 @authorize
 def upload_file():
     if request.method == 'POST':
         if 'file' not in request.files:
-            flash('Please select an image to upload', 'alert alert-danger')
-            return redirect(request.url)
+            flash('File type not allowed', 'alert alert-danger')
+            return redirect(url_for('home'))
         file = request.files['file']
+        
+        if imghdr.what(file) not in ALLOWED_EXTENSIONS:
+            flash('File type not allowed', 'alert alert-danger')
+            return redirect(url_for('home'))
+        
         if file.filename == '' or not allowed_file(file.filename):
-            flash('Please select a proper image', 'alert alert-danger')
-            return redirect(request.url)
+            flash('File type not allowed', 'alert alert-danger')
+            return redirect(url_for('home'))
 
         filename = secure_filename(file.filename)
         image_base64 = base64.b64encode(file.read()).decode('utf-8')
@@ -155,18 +155,31 @@ def upload_file():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('INSERT INTO images VALUES (NULL, %s, %s, %s)', (session['id'], filename, encrypted_image))
         mysql.connection.commit()
-        flash('File uploaded successfully', 'success')
+        flash('File uploaded successfully', 'alert alert-success')
         return redirect(url_for('home'))
 
     flash('File type not allowed', 'alert alert-danger')
     return redirect(url_for('home'))
 
 # Delete file route
-@app.route('/delete/<filename>', methods=['POST'])
+@app.route('/delete', methods=['POST'])
 @authorize
-def delete_file(filename):
-    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    flash('File deleted successfully', 'success')
+def delete_file():
+    if request.method == 'POST':
+        image_id = request.form.get('image_id')
+        if not image_id:
+            flash('Please provide an image to delete', 'alert alert-danger')
+            return redirect(url_for('home'))
+
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('DELETE FROM images WHERE image_id = %s AND user_id = %s', (image_id, session['id']))
+        mysql.connection.commit()
+
+        if cursor.rowcount == 0:
+            flash('Failed to delete the image. Please try again later.', 'alert alert-danger')
+        else:
+            flash('File deleted successfully', 'alert alert-success')
+
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
