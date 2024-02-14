@@ -1,13 +1,9 @@
-# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
@@ -15,23 +11,22 @@ RUN apt-get update && \
     libmariadb-dev-compat \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pkg-config
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-# Set environment variables
 ENV PKG_CONFIG_PATH /usr/lib/x86_64-linux-gnu/pkgconfig
 
-# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# # Make port 80 available to the world outside this container
-# EXPOSE 6969
-
-# Define environment variable
 ENV FLASK_APP=app.py
 
-# Run app.py when the container launches
+ENV FLASK_SECRET_KEY=4528f440-1791-4770-b153-73dae6de7f73
+
+ENV MYSQL_HOST=db
+ENV MYSQL_USER=sawidproadmin
+ENV MYSQL_PASSWORD=vaeiiGbL%j3jjQ!6duFKk79koKYLch%d
+ENV MYSQL_DB=sawitpro
+
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "6969", "--debug"]
