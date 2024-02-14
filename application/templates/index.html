@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex main-section-home">
+    <div class="title-section-home p-5">
+        <h1>
+            Welcome <span class="innvator-span">{{ username }}</span>
+        </h1>
+        <h1 class="home-title-1">
+            Secure <span class="innvator-span">Image Storage</span> system
+        </h1>
+        <h3 class="home-title-2">
+            All images will be encrypted in our database upon upload. You can only view the pictures you have uploaded and cannot see other people's pictures.
+        </h3>
+        <button class="home-upload-btn mt-5">Upload file</button>
+    </div>
+    <div class="img-section-main">
+        <img src="{{ url_for('static', filename='assets/sawit-bg-1.jpg') }}" class="img-items-section img-static-big" alt="">
+        <img src="{{ url_for('static', filename='assets/sawit-bg-2.gif') }}" class="img-items-section img-change-small" alt="">
+    </div>
+</div>
+<div class="d-flex main-section-home">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+{% endblock %}

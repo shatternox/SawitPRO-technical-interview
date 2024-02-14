@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SawitPRO - Image Storage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .home-upload-btn{
+            background-color: rgb(252, 209, 2);
+            border: 0 solid black;
+            border-radius: 100px;
+            cursor: pointer!important;
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            text-align: initial;
+            padding: 10px 20px;
+            font-weight: bolder;
+        }
+
+        .main-section-home{
+            padding: 20px 30px;
+            min-height: 980px;
+            background-color: #3c5337;
+            color: white;
+        }
+
+        .img-section-main{
+            position: relative;
+            flex-grow: 1;
+            padding: 0px 20px;
+        }
+
+        .img-items-section{
+            position: absolute;
+        }
+
+        .img-static-big{
+            right: 0;
+            top: 0;
+            width: 90%;
+            height: 100%;
+            border: 15px solid black;
+            border-radius: 50px;
+        }
+
+        .img-change-small{
+            left: -40px;
+            bottom: 0;
+            width: 60%;
+            height: 70%;
+            border: 15px solid black;
+            border-radius: 50px;
+        }
+
+        .title-section-home{
+            width: 60%;
+        }
+
+        .innvator-span{
+            color: #fcd102;
+        }
+
+        .home-title-1{
+            font-size: 57px;
+        }
+
+        .home-title-2{
+            font-size: 16px;
+        }
+
+        .navbar-custom{
+            background-color: #384c2c;
+        }
+
+        .navbar-brand{
+            font-weight: bolder;
+            color: #fcd102;
+        }
+        .navbar-brand:hover{
+            text-decoration: none;
+            cursor: pointer;
+            color: #fcd102;
+        }
+        .nav-item a{
+            color: #fcd102;
+            text-decoration: none;
+        }
+        .nav-item a:hover{
+            color: white;
+            text-decoration: underline;
+        }
+
+        .login-alert-home{
+            z-index: 10;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">SawitPro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a  aria-current="page" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="{{ category }} alert-dismissible fade show login-alert-home" id="login-flash" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}
+
+
+
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
