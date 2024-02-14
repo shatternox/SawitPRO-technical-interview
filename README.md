@@ -1,11 +1,8 @@
-```
-ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW
-```
-## Activate Environment
+# ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW
+
+## Activate Environment (for development)
 
 1. `source .env/bin/activate`
-2. 
-
 
 ## Deployment
 
