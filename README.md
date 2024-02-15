@@ -1,5 +1,8 @@
 # ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW
 
+## Public Versipn
+http://sawitpro.user.cloudjkt02.com/
+
 ## Technologies
 1. Flask Web Application
 2. Database: MySQL
