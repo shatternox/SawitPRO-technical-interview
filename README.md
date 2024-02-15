@@ -1,5 +1,10 @@
 # ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW
 
+## Technologies
+1. Flask Web Application
+2. Database: MySQL
+3. Bootstrap frontend
+
 ## Activate Environment (for development)
 
 1. `source .env/bin/activate`
@@ -22,7 +27,7 @@
 4. Filesize is protected and limited by NGINX.
 5. I've also put a super secure response header on the NGINX configuration.
 6. File type has been filtered by the File Signature + Extensions making upload of malicious file impossible. Even if the attacker edit the file signature hex and the extensions, the file would be unusable because of improper formatting.
-7. The web is 100% not vulnerable to the OWASP Top 10 checklists (Injection attack such as SQLI, XXE, etc is not possible).
+7. **The web is 100% not vulnerable to the OWASP Top 10 checklists (Injection attack such as SQLI, XXE, etc is not possible).**
 7. To delete the image, just click the image, then there's a delete button below.
 
 
@@ -32,6 +37,8 @@
 2. I think the code could be cleaner.
 3. And of course HTTPS and stuff, but I feel it's not necessary for a demo site.
 4. I purposedly didn't add any strong password policy because it will just hinder the testing and it's annoying. Later if you want to make this production, surely we can implement that.
+5. Use Key Management Service such as Azure Key Vault, Hashicorp, or AWS Secret Manager (but no budget for that)
+6. Store the image data on third-party service such as S3 and access it only via pre-signed URL (transferring the risk)
 
 
 ## Note to self
