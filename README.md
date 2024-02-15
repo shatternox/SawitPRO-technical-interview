@@ -3,6 +3,9 @@
 ## Public Version
 http://sawitpro.user.cloudjkt02.com/
 
+## Demo Video
+https://drive.google.com/file/d/1TtGsAgX17a-rRoFuZqou8C5bye8t7Idm/view?usp=sharing
+
 ## Technologies
 1. Flask Web Application
 2. Database: MySQL
@@ -31,7 +34,7 @@ http://sawitpro.user.cloudjkt02.com/
 5. I've also put a super secure response header on the NGINX configuration.
 6. File type has been filtered by the File Signature + Extensions making upload of malicious file impossible. Even if the attacker edit the file signature hex and the extensions, the file would be unusable because of improper formatting.
 7. **The web is 100% not vulnerable to the OWASP Top 10 checklists (Injection attack such as SQLI, XXE, etc is not possible).**
-7. To delete the image, just click the image, then there's a delete button below.
+8. To delete the image, just click the image, then there's a delete button below.
 
 
 ## What to improve
