@@ -29,4 +29,6 @@ ENV MYSQL_USER=sawidproadmin
 ENV MYSQL_PASSWORD=vaeiiGbL%j3jjQ!6duFKk79koKYLch%d
 ENV MYSQL_DB=sawitpro
 
+EXPOSE 6969
+
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "6969", "--debug"]
