@@ -1,6 +1,6 @@
-# ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW
+# ARDIAN DANNY - SAWITPRO, TECHNICAL INTERVIEW (Cyber Security Engineer)
 
-## Public Versipn
+## Public Version
 http://sawitpro.user.cloudjkt02.com/
 
 ## Technologies
@@ -42,7 +42,7 @@ http://sawitpro.user.cloudjkt02.com/
 4. I purposedly didn't add any strong password policy because it will just hinder the testing and it's annoying. Later if you want to make this production, surely we can implement that.
 5. Use Key Management Service such as Azure Key Vault, Hashicorp, or AWS Secret Manager (but no budget for that)
 6. Store the image data on third-party service such as S3 and access it only via pre-signed URL (transferring the risk)
-
+7. Add a CSRF Token Mechanism etc.
 
 ## Note to self
 
