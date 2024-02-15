@@ -15,13 +15,13 @@ services:
     volumes:
       - ./database:/docker-entrypoint-initdb.d
       - ./mysql_data:/var/lib/mysql
-      
+
   app:
     build: .
     ports:
       - "6969:6969"
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=production
     volumes:
       - .:/app
     depends_on:

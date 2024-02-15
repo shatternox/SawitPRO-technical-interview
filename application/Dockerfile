@@ -31,4 +31,5 @@ ENV MYSQL_DB=sawitpro
 
 EXPOSE 6969
 
-CMD ["flask", "run", "--host", "0.0.0.0", "--port", "6969", "--debug"]
+# CMD ["flask", "run", "--host", "0.0.0.0", "--port", "6969", "--debug"]
+CMD ["flask", "run", "--host", "0.0.0.0", "--port", "6969"]

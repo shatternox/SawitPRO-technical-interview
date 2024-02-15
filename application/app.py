@@ -184,4 +184,5 @@ def delete_file():
 
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.run(host='0.0.0.0', port=6969, debug=True)
+    app.run(host='0.0.0.0', port=6969)
+    # app.run(host='0.0.0.0', port=6969, debug=True)
